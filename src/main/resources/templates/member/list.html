@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Insert title here</title>
+</head>
+<body>
+<h1>회원목록</h1>
+<ol>
+  <li th:each="dto:${list}">
+    <span th:text="${dto.id}"></span>
+  </li>
+</ol>
+</body>
+</html>

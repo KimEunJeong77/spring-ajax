@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Insert title here</title>
+  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+  <script>
+    $(document).ready(function(){
+      $("#listButton").click(listFunc);
+    });
+    function listFunc(){
+      console.log("listFunc");
+      $.ajax({
+        url: "/member/ajax/list",
+        type:"GET",
+        success: function(data) {
+          console.log(data);
+          $("#listContainer").replaceWith(data);
+        }
+      });
+    }
+  </script>
+</head>
+<body>
+<a href="/member/list">회원리스트</a><br/>
+<a href="#" id="listButton">회원리스트(AJAX)</a><br/>
+<div id="listContainer">
+  <ol>
+    <li th:each="dto:${list}">
+      <span th:text="${dto.id}"></span>
+    </li>
+  </ol>
+</div>
+</body>
+</html>
